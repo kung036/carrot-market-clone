@@ -25,8 +25,27 @@ footer {
   cursor: pointer;
 }
 
+@keyframes icon-doong-doong {
+  0% {
+    transform: translateY(0px);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+  70% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 .footer-icons__img {
   width: 30px;
+}
+
+.footer-icons__img:hover {
+  animation: 2s icon-doong-doong infinite;
 }
 
 .footer-icons__desc {
