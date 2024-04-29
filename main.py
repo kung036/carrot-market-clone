@@ -8,6 +8,21 @@ import sqlite3
 con = sqlite3.connect('db.db', check_same_thread=False)
 cur = con.cursor()
 
+
+# deta.space에 테이블 생성하기 위함(백엔드 코드 실행 시 테이블 생성)
+# IF NOT EXISTS : 없을 때만 테이블 생성
+cur.execute(f"""
+            CREATE TABLE IF NOT EXISTS items (
+                id INTEGER PRIMARY KEY,
+                title TEXT NOT NULL,
+                image BLOB,
+                price INTEGER NOT NULL,
+                description TEXT,
+                place TEXT NOT NULL,
+                insertAt INTEGER NOT NULL
+            );
+            """)
+
 app = FastAPI()
 
 # 하향식 코드
