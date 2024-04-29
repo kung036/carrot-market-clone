@@ -10,7 +10,7 @@ const calcTime = (timestamp) => {
   if (hour > 0) return `${hour}시간 전`;
   else if (minutes > 0) return `${minutes}분 전`;
   else if (seconds > 0) return `${seconds}초 전`;
-  else "방금전";
+  else return "방금전";
 };
 
 // 판매되는 이미지 출력하기
