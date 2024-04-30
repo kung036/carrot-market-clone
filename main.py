@@ -67,8 +67,17 @@ async def get_image(item_id):
 
 # 회원가입
 @app.post('/signup')
-def signup(id:Annotated[str,Form()], password:Annotated[str,Form()]):
-    print(id, password)
+def signup(id:Annotated[str,Form()], 
+           password:Annotated[str,Form()],
+           name:Annotated[str,Form()],
+           email:Annotated[str,Form()],
+           ):
+    # 회원가입 중복방지 코드 추가하기
+    cur.execute(f"""
+                INSERT INTO users(id,name,email,password)
+                VALUES('{id}','{name}','{email}','{password}');
+                """)
+    con.commit()
     return 200
 
 # root 경로(위에 api 작성해야 적용됨)

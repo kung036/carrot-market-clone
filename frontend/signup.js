@@ -31,8 +31,11 @@ const handleSubmit = async (event) => {
     // 서버 요청 성공 시
     const data = await res.json();
     if (data === 200) {
-      div.innerText = "회원가입에 성공했습니다!";
-      div.computedStyleMap.color = "blue";
+      // div.innerText = "회원가입에 성공했습니다!";
+      // div.computedStyleMap.color = "blue";
+      alert("회원가입에 성공했습니다.");
+      // 로그인 화면 전환
+      window.location.pathname = "/login.html";
     }
   } else {
     // 비밀번호가 입력되지 않은 경우
