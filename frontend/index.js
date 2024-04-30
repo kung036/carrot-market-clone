@@ -57,8 +57,20 @@ const renderDate = (data) => {
 };
 
 // 서버로부터 데이터받아오기
+const accessToken = window.localStorage.getItem("token");
 const fetchList = async () => {
-  const res = await fetch("/items");
+  const res = await fetch("/items", {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  console.log(res.status);
+  if (res.status == 401) {
+    alert("로그인이 필요합니다!");
+    window.location.pathname = "/login.html";
+    return;
+  }
+
   const data = await res.json();
   renderDate(data);
 };

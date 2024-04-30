@@ -15,9 +15,29 @@ const handleSubmit = async (event) => {
 
   // 로그인 요청 성공 시
   const data = await res.json();
+  const accessToken = data.access_token;
   console.log(data);
   if (res.status === 200) {
+    // 로그인 성공해서 items 가져오기
+    // const infoDiv = document.querySelector("#info");
+    // infoDiv.innerText = "로그인에 성공했습니다.";
+
+    // const btn = document.createElement("button");
+    // btn.innerText = "상품 가져오기!";
+    // btn.addEventListener("click", async () => {
+    //   const res = await fetch("/items", {
+    //     headers: {
+    //       Authorization: `Bearer ${accessToken}`,
+    //     },
+    //   });
+    //   const data = await res.json();
+    //   console.log(data);
+    // });
+    // infoDiv.appendChild(btn);
+
     alert("로그인에 성공했습니다.");
+    window.localStorage.setItem("token", accessToken);
+    // window.sessionStorage.setItem("token", accessToken); // 브라우저 창 제거 시 삭제됨
     console.log(res.status);
     window.location.pathname = "/";
   } else if (res.status === 401) {
