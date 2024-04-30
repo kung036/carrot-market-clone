@@ -65,5 +65,11 @@ async def get_image(item_id):
     """).fetchone()[0] # hex(16진법)
     return Response(content=bytes.fromhex(image_bytes, media_type='image/*')) # 16진법 해석 후 바이트 변환해서 반환
 
+# 회원가입
+@app.post('/signup')
+def signup(id:Annotated[str,Form()], password:Annotated[str,Form()]):
+    print(id, password)
+    return 200
+
 # root 경로(위에 api 작성해야 적용됨)
 app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
