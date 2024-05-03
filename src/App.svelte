@@ -5,6 +5,7 @@
   import Write from "./pages/Write.svelte";
   import Router from "svelte-spa-router";
   import NotFound from "./pages/NotFound.svelte";
+  import Loading from "./pages/Loading.svelte";
   import "./css/style.css";
   import {
     GoogleAuthProvider,
@@ -42,7 +43,7 @@
 </script>
 
 {#if isLoading}
-  <div>로딩 중입니다~</div>
+  <Loading />
 {:else if !$user$}
   <Login />
 {:else}
