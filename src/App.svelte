@@ -24,11 +24,17 @@
     const token = localStorage.getItem("token"); // access token
     if (!token) return (isLoading = false);
 
-    const credential = GoogleAuthProvider.credential(null, token);
-    const result = await signInWithCredential(auth, credential);
-    const user = result.user;
-    user$.set(user);
-    isLoading = false;
+    try {
+      const credential = GoogleAuthProvider.credential(null, token);
+      const result = await signInWithCredential(auth, credential);
+      const user = result.user;
+      user$.set(user);
+      isLoading = false;
+    } catch (error) {
+      user$.set(null);
+      localStorage.removeItem("token");
+      window.location.hash = "/login";
+    }
   };
 
   // router 설정
