@@ -14,6 +14,7 @@
   } from "firebase/auth";
   import { user$ } from "./store";
   import { onMount } from "svelte";
+  import MyPage from "./pages/MyPage.svelte";
 
   let isLoading = true;
 
@@ -35,6 +36,7 @@
     "/": Main,
     "/signup": Singup,
     "/write": Write,
+    "/my": MyPage,
     "*": NotFound,
   };
 
